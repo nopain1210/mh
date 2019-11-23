@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head th:insert="fragments :: head(title = 'Employees List')">
+</head>
+<body>
+<nav th:replace="fragments :: nav-bar(page='list')"></nav>
+
+<div class="main-content">
+    <!-- Navbar -->
+    <nav class="navbar navbar-top navbar-expand-md navbar-dark" id="navbar-main">
+        <div class="container-fluid">
+            <!-- Brand -->
+            <a class="h4 mb-0 text-white text-uppercase d-none d-lg-inline-block" th:href="@{/list}">Danh sách nhân
+                viên</a>
+            <!-- Form -->
+            <form class="navbar-search navbar-search-dark form-inline mr-3 d-none d-md-flex ml-lg-auto">
+                <div class="form-group mb-0">
+                    <div class="input-group input-group-alternative">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="fas fa-search"></i></span>
+                        </div>
+                        <input class="form-control" placeholder="Search" type="text">
+                    </div>
+                </div>
+            </form>
+        </div>
+    </nav>
+    <!-- End Navbar -->
+    <!-- Header -->
+    <div class="header bg-gradient-primary pb-8 pt-5 pt-md-8">
+        <div class="container-fluid">
+            <div class="header-body">
+
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid mt--7">
+        <!-- Table 1 -->
+        <div th:each="department : ${departmentMap}" class="row mb-4">
+            <div class="col">
+                <div class="card shadow" th:object="${department.value}">
+                    <div class="card-header border-0">
+                        <h3 class="mb-0">Phòng ban: <span th:text="${department.key}"></span> </h3>
+                    </div>
+                    <div class="table-responsive">
+                        <table class="table align-items-center table-flush" >
+                            <thead class="thead-light">
+                            <tr>
+                                <th scope="col">Họ và tên</th>
+                                <th scope="col">Số điện thoại</th>
+                                <th scope="col">Lương cơ bản</th>
+                                <th scope="col">Hệ số</th>
+                                <th scope="col">Tổng lương</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr th:each="employee : *{employeeList}">
+                                <th scope="row" th:text="${employee.fullName}"></th>
+                                <td th:text="${employee.tel}"></td>
+                                <td th:text="${employee.salary}"></td>
+                                <td th:text="${employee.coe}"></td>
+                                <td th:text="${employee.pay}"></td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="card-header border-0">
+                        <h3 class="mb-0">Danh sách nhân viên có mức lương cao nhất</h3>
+                    </div>
+                    <div class="table-responsive">
+                        <table class="table align-items-center table-flush" >
+                            <thead class="thead-light">
+                            <tr>
+                                <th scope="col">Họ và tên</th>
+                                <th scope="col">Số điện thoại</th>
+                                <th scope="col">Lương cơ bản</th>
+                                <th scope="col">Hệ số</th>
+                                <th scope="col">Tổng lương</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr th:each="employee : *{highestPayList}">
+                                <th scope="row" th:text="${employee.fullName}"></th>
+                                <td th:text="${employee.tel}"></td>
+                                <td th:text="${employee.salary}"></td>
+                                <td th:text="${employee.coe}"></td>
+                                <td th:text="${employee.pay}"></td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="card-footer py-4">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Footer -->
+        <footer th:replace="fragments :: footer"></footer>
+    </div>
+</div>
+
+<div th:replace="fragments :: core-script"></div>
+
+</body>
+
+</html>

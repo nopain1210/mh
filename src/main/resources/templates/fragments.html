@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head th:fragment="head (title)">
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title th:text="${title}">
+    </title>
+    <!-- Favicon -->
+    <link href="assets/img/brand/favicon.png" rel="icon" type="image/png">
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
+    <!-- Icons -->
+    <link href="assets/js/plugins/nucleo/css/nucleo.css" rel="stylesheet"/>
+    <link href="assets/js/plugins/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet"/>
+    <!-- CSS Files -->
+    <link href="assets/css/argon-dashboard.css?v=1.1.0" rel="stylesheet"/>
+
+    <link href="assets/css/notify.css" rel="stylesheet">
+</head>
+<body>
+<nav th:fragment="nav-bar (page)" class="navbar navbar-vertical fixed-left navbar-expand-md navbar-light bg-white" id="sidenav-main">
+    <div class="container-fluid">
+        <!-- Toggler -->
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#sidenav-collapse-main"
+                aria-controls="sidenav-main" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <!-- Brand -->
+        <a class="navbar-brand pt-0" href="#">
+            <img src="assets/img/brand/blue.png" class="navbar-brand-img" alt="...">
+        </a>
+        <!-- User -->
+        <!-- Collapse -->
+        <div class="collapse navbar-collapse" id="sidenav-collapse-main">
+            <!-- Collapse header -->
+            <div class="navbar-collapse-header d-md-none">
+                <div class="row">
+                    <div class="col-6 collapse-brand">
+                        <a href="#">
+                            <img src="assets/img/brand/blue.png">
+                        </a>
+                    </div>
+                    <div class="col-6 collapse-close">
+                        <button type="button" class="navbar-toggler" data-toggle="collapse"
+                                data-target="#sidenav-collapse-main" aria-controls="sidenav-main" aria-expanded="false"
+                                aria-label="Toggle sidenav">
+                            <span></span>
+                            <span></span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <!-- Form -->
+            <form class="mt-4 mb-3 d-md-none">
+                <div class="input-group input-group-rounded input-group-merge">
+                    <input type="search" class="form-control form-control-rounded form-control-prepended"
+                           placeholder="Search" aria-label="Search">
+                    <div class="input-group-prepend">
+                        <div class="input-group-text">
+                            <span class="fa fa-search"></span>
+                        </div>
+                    </div>
+                </div>
+            </form>
+            <!-- Navigation -->
+            <ul class="navbar-nav">
+                <li class="nav-item" th:classappend="${page == 'add'} ? active">
+                    <a class=" nav-link " th:classappend="${page == 'add'} ? active" th:href="@{/}"> <i class="ni ni-tv-2 text-primary"></i> Nhập vào danh sách
+                    </a>
+                </li>
+                <li class="nav-item"  th:classappend="${page == 'list'} ? active">
+                    <a class="nav-link" th:classappend="${page == 'list'} ? active" th:href="@{/list}">
+                        <i class="ni ni-bullet-list-67 text-blue"></i> Hiển thị danh sách
+                    </a>
+                </li>
+            </ul>
+            <!-- Divider -->
+            <hr class="my-3">
+            <!-- Heading -->
+            <h6 class="navbar-heading text-muted">Lorem ipsum</h6>
+            <!-- Navigation -->
+            <ul class="navbar-nav mb-md-3">
+                <li class="nav-item">
+                    <a class="nav-link" href="#">
+                        <i class="ni ni-spaceship"></i> Lorem ipsum
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">
+                        <i class="ni ni-palette"></i> Lorem ipsum
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">
+                        <i class="ni ni-ui-04"></i> Lorem ipsum
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<footer th:fragment="footer" class="footer mt-6">
+    <div class="row align-items-center justify-content-xl-between">
+        <div class="col-xl-6">
+            <div class="copyright text-center text-xl-left text-muted">
+                &copy; 2019 <a href="#" class="font-weight-bold ml-1">Mỹ Hạnh xinh gái chưa có nguời iu</a>
+            </div>
+        </div>
+        <div class="col-xl-6">
+            <ul class="nav nav-footer justify-content-center justify-content-xl-end">
+                <li class="nav-item">
+                    <a href="#" class="nav-link">Lorem ipsum</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link">Lorem ipsum</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link">Lorem ipsum</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</footer>
+
+<div th:fragment="core-script">
+    <!--   Core   -->
+    <script src="assets/js/plugins/jquery/dist/jquery.min.js"></script>
+    <script src="assets/js/plugins/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <!--   Optional JS   -->
+    <!--   Argon JS   -->
+    <script src="assets/js/argon-dashboard.min.js?v=1.1.0"></script>
+    <script src="https://cdn.trackjs.com/agent/v3/latest/t.js"></script>
+    <script>
+        window.TrackJS &&
+        TrackJS.install({
+            token: "ee6fab19c5a04ac1a32a645abde4613a",
+            application: "argon-dashboard-free"
+        });
+    </script>
+</div>
+</body>
+</html>
